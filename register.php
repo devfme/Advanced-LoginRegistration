@@ -23,20 +23,20 @@
                     <?php endif; ?>
                 </div>
                 <div class="wrap-input100">
-                    <input class="input100" type="text" name="fullname">
+                    <input class="input100" value="<?= $_POST['fullname'] ?? ''; ?>" type="text" name="fullname">
                     <span class="focus-input100"></span>
                     <span class="label-input100">Full name</span>
                     <div id="uname_response" ></div>
                 </div>
                 <div class="wrap-input100">
-                    <input class="input100" type="text" name="username">
+                    <input class="input100" type="text" value="<?= $_POST['username'] ?? ''; ?>" name="username">
                     <span class="focus-input100"></span>
                     <span class="label-input100">Username</span>
                     <div id="uname_response" ></div>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="email">
+                    <input class="input100" type="text" value="<?= $_POST['email'] ?? ''; ?>" name="email">
                     <span class="focus-input100"></span>
                     <span class="label-input100">Email</span>
                 </div>

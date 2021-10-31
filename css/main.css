@@ -618,3 +618,7 @@ input.input100 {
   background: #333333;
   color: #fff;
 }
+.fakeimg {
+  height: 200px;
+  background-color: #6675df;
+}

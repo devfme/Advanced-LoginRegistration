@@ -86,7 +86,7 @@ if (isset($_POST['register'])) {
 
 
                                 $mail->IsSMTP();
-                                $mail->SMTPDebug = 4;
+                                $mail->SMTPDebug = false;
                                 $mail->SMTPAuth = EMAIL_SMTP_AUTH;
                                 $mail->SMTPSecure =EMAIL_SMTP_ENCRYPTION ;
                                 $mail->Host = EMAIL_SMTP_HOST;
