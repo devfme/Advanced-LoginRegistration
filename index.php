@@ -5,6 +5,7 @@
         <?php
 include 'config/config.php';
 include 'sessions/session.php';
+include 'helpers/resend.php';
 include 'styles/styles.php'?>
 
 </head>
@@ -13,7 +14,7 @@ include 'styles/styles.php'?>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
     <div class="alert alert-warning">
-        <p>Verify your email to explore all features</p>
+        <p>Verify your email ( <strong><?php echo $_SESSION['lr_email'] ?></strong> ) to explore all features</p>
         <a href="index.php?action=resend" class="btn btn-info">Resend Activation link</a>
 </div>
 <?php } ?>
