@@ -11,6 +11,14 @@ if(isset($_GET['action'])){
 if ($_GET['action']=="resend") {
     $email = $_SESSION['lr_email'];
     $uid=$_SESSION['lr_id'];
+$checkrequests=mysqli_query($conn,"select count (*) as requests from resend where user_id='$uid'");
+    $rowreq=mysqli_fetch_assoc($checkrequests);
+if ($rowreq['requests']>2){
+    echo "<script>
+alert('Reached maximum trials of Verification request.Try again later');
+ window.location.href='index.php';
+</script>";
+}else{
     $user_token = rand(100000,999999);
 
     $user_registration_token = md5(rand());
@@ -18,6 +26,7 @@ if ($_GET['action']=="resend") {
     $checkstatus=mysqli_query($conn,"select * from users where email='$email' and user_id='$uid'");
 
     $rowres=$checkstatus->fetch_assoc();
+
 
     if ($rowres['user_active']==0){
 
@@ -66,12 +75,12 @@ The link will expire after 24hours for security reason.</p>';
 
             $sql = "update users SET user_activation_hash='$user_registration_token' where user_id='$uid'";
             if (mysqli_query($conn, $sql)) {
-
+            $res=mysqli_query($conn,"insert into resend set user_id='$uid'");
                 echo"<script>
 alert('Activation link sent successfully');
-window.setTimeout(function() {
+
                                     window.location.href='index.php';
-                                }, 1000);
+
 </script>";
 
 
@@ -95,7 +104,7 @@ alert('Your account is active');
     }
 
 
-}else{
+}}else{
     header("location:index.php");
 }
 
